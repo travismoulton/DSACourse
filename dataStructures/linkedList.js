@@ -74,11 +74,12 @@ class SinglyLinkedList {
 
   get(index) {
     if (index < 0 || index >= this.length) return null;
+    console.log(index);
 
     let ctr = 0;
     let currentNode = this.head;
 
-    while (ctr < index) {
+    while (ctr !== index) {
       currentNode = currentNode.next;
       ctr++;
     }
@@ -116,6 +117,57 @@ class SinglyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index > this.length - 1) return false;
+
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift(val);
+
+    const prevNode = this.get(index - 1);
+    const nodeAtIndex = prevNode.next;
+    prevNode.next = nodeAtIndex.next;
+    this.length--;
+
+    return nodeAtIndex;
+  }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let prevNode = null;
+    let nextNode = null;
+
+    for (let i = 0; i < this.length; i++) {
+      nextNode = node.next;
+      node.next = prevNode;
+      prevNode = node;
+      node = nextNode;
+    }
+
+    return this;
+
+    // 1, 2, 3, 4
+    // 4, 3, 2, 1
+  }
+
+  myReverse() {
+    for (let i = 1; i < this.length; i++) {
+      const prevNode = this.get(this.length - i - 1);
+      const currentNode = prevNode.next;
+
+      currentNode.next = prevNode;
+    }
+
+    const oldHead = this.head;
+    this.head = this.tail;
+    this.tail = oldHead;
+    this.tail.next = null;
+
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -124,9 +176,13 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
+list.push(5);
+list.push(6);
+list.push(7);
+list.push(8);
 list.unshift(0);
 
-console.log(list.pop());
 console.log(list);
 
-console.log(list.insert(0, "someVal"));
+list.myReverse();
+console.log(list);

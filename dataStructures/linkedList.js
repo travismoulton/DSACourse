@@ -148,14 +148,11 @@ class SinglyLinkedList {
     }
 
     return this;
-
-    // 1, 2, 3, 4
-    // 4, 3, 2, 1
   }
 
   myReverse() {
-    for (let i = 1; i < this.length; i++) {
-      const prevNode = this.get(this.length - i - 1);
+    for (let i = this.length - 1; i > 1; i--) {
+      const prevNode = this.get(i - 1);
       const currentNode = prevNode.next;
 
       currentNode.next = prevNode;

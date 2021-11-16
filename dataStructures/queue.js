@@ -16,7 +16,7 @@ class Queue {
     const node = new Node(val);
 
     if (!this.length) {
-      this.frst = node;
+      this.first = node;
       this.last = node;
     } else {
       this.tail.next = node;

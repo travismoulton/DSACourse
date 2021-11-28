@@ -1,0 +1,14 @@
+{
+  "name": "y",
+  "version": "y",
+  "description": "y",
+  "main": "y",
+  "repository": "y",
+  "author": "y",
+  "license": "y",
+  "private": true,
+  "scripts": {
+    "start": "snowpack dev"
+  },
+  "devDependencies": {}
+}

@@ -98,3 +98,5 @@ console.log(q.dequeue());
 console.log(q.dequeue());
 
 console.log(q.values);
+
+export default { Node, PriorityQueue };

@@ -119,3 +119,5 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 
 console.log(g.bfs("A"));
+
+export default Graph;
